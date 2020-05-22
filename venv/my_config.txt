@@ -1,0 +1,167 @@
+<INSTANCE>
+    <QUERY>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
+                                    ?paragraph legal:topic ?x   .
+                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:text ?text .
+                                    FILTER(?class="regulations")    .
+                                    OPTIONAL{?paragraph legal:context ?context}
+                             }
+    </QUERY>
+    <QUESTION>
+        What regulations exist with respect to ?x
+    </QUESTION>
+    <QUESTION>
+        What rules govern the ?x
+    </QUESTION>
+    <QUESTION>
+        What are the rules of the ?x
+    </QUESTION>
+        <QUESTION>
+        What regulations exist with respect to ?x for ?context
+    </QUESTION>
+    <QUESTION>
+        What rules govern the ?x in the context of ?context
+    </QUESTION>
+    <VARIABLES>
+         ?x ?context
+    </VARIABLES>
+</INSTANCE>
+<INSTANCE>
+    <QUERY>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
+                                    ?paragraph legal:topic ?x   .
+                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:text ?text .
+                                    FILTER(?class="requirements") .
+                                    OPTIONAL{?paragraph legal:context ?context}
+                             }
+    </QUERY>
+    <QUESTION>
+        What requirements does the ?x have
+    </QUESTION>
+    <QUESTION>
+        What are requirements of the ?x
+    </QUESTION>
+    <QUESTION>
+        WWhat requirements exist with respect to ?x for ?context
+    </QUESTION>
+    <VARIABLES>
+        ?x ?context
+    </VARIABLES>
+</INSTANCE>
+<INSTANCE>
+    <QUERY>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
+                                    ?paragraph legal:topic ?x   .
+                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:text ?text .
+                                    FILTER(?class="restrictions") .
+                                    OPTIONAL{?paragraph legal:context ?context}
+                             }
+    </QUERY>
+    <QUESTION>
+        What restrictions concerning ?x apply for ?context
+    </QUESTION>
+    <VARIABLES>
+        ?x ?context
+    </VARIABLES>
+</INSTANCE>
+<INSTANCE>
+    <QUERY>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
+                                    ?paragraph legal:topic ?x   .
+                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:text ?text .
+                                    FILTER(?class="rights") .
+                                    OPTIONAL{?paragraph legal:context ?context}
+                             }
+    </QUERY>
+    <QUESTION>
+        What rights exist with respect to ?x
+    </QUESTION>
+    <QUESTION>
+        What are the rights of the ?x
+    </QUESTION>
+    <QUESTION>
+        What are the rights of the ?x in relation to the ?context
+    </QUESTION>
+    <VARIABLES>
+        ?x ?context
+    </VARIABLES>
+</INSTANCE>
+<INSTANCE>
+    <QUERY>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
+                                    ?paragraph legal:topic ?x   .
+                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:text ?text .
+                                    FILTER(?class="duties") .
+                                    OPTIONAL{?paragraph legal:context ?context}
+                             }
+    </QUERY>
+    <QUESTION>
+        What duties exist with respect to ?x
+    </QUESTION>
+    <QUESTION>
+        What are the duties of the ?x
+    </QUESTION>
+    <QUESTION>
+        What are the duties of the ?x for ?context
+    </QUESTION>
+    <VARIABLES>
+        ?x ?context
+    </VARIABLES>
+</INSTANCE>
+<INSTANCE>
+    <QUERY>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
+                                    ?paragraph legal:topic ?x   .
+                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:text ?text .
+                                    FILTER(?class="purpose")    .
+                                    OPTIONAL{?paragraph legal:context ?context}
+                             }
+    </QUERY>
+    <QUESTION>
+        What is the purpose of ?x
+    </QUESTION>
+    <VARIABLES>
+        ?x ?context
+    </VARIABLES>
+</INSTANCE>
+<INSTANCE>
+    <QUERY>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        SELECT ?x ?text  WHERE {    ?article legal:has ?paragraph .
+                                    ?paragraph legal:topic ?x   .
+                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:text ?text .
+                                    FILTER(?class="definition")
+                                    OPTIONAL{?paragraph legal:context ?context}
+                             }
+    </QUERY>
+    <QUESTION>
+        What is a ?x
+    </QUESTION>
+    <QUESTION>
+        How is a ?x defined
+    </QUESTION>
+    <QUESTION>
+        What is understood by a ?x
+    </QUESTION>
+    <QUESTION>
+        What is meant by a ?x
+    </QUESTION>
+    <VARIABLES>
+        ?x
+    </VARIABLES>
+</INSTANCE>
+
+
