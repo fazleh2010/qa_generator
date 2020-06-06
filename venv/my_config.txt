@@ -2,41 +2,11 @@
     <QUERY>
         PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
-                                    ?paragraph legal:topic ?x   .
-                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:ofClass ?class .
+                                    ?class rdf:type legal:Requirement   .
+                                    ?class legal:requestedObject ?x  .
                                     ?paragraph legal:text ?text .
-                                    FILTER(?class="regulations")    .
-                                    OPTIONAL{?paragraph legal:context ?context}
-                             }
-    </QUERY>
-    <QUESTION>
-        What regulations exist with respect to ?x
-    </QUESTION>
-    <QUESTION>
-        What rules govern the ?x
-    </QUESTION>
-    <QUESTION>
-        What are the rules of the ?x
-    </QUESTION>
-        <QUESTION>
-        What regulations exist with respect to ?x for ?context
-    </QUESTION>
-    <QUESTION>
-        What rules govern the ?x in the context of ?context
-    </QUESTION>
-    <VARIABLES>
-         ?x ?context
-    </VARIABLES>
-</INSTANCE>
-<INSTANCE>
-    <QUERY>
-        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
-        SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
-                                    ?paragraph legal:topic ?x   .
-                                    ?paragraph legal:class ?class    .
-                                    ?paragraph legal:text ?text .
-                                    FILTER(?class="requirements") .
-                                    OPTIONAL{?paragraph legal:context ?context}
+                                    OPTIONAL{?class legal:requirementContext ?context}
                              }
     </QUERY>
     <QUESTION>
@@ -46,7 +16,7 @@
         What are requirements of the ?x
     </QUESTION>
     <QUESTION>
-        WWhat requirements exist with respect to ?x for ?context
+        What requirements exist with respect to ?x for ?context
     </QUESTION>
     <VARIABLES>
         ?x ?context
@@ -56,11 +26,11 @@
     <QUERY>
         PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
-                                    ?paragraph legal:topic ?x   .
-                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:ofClass ?class .
+                                    ?class rdf:type legal:Restriction   .
+                                    ?class legal:restrictedObject ?x  .
                                     ?paragraph legal:text ?text .
-                                    FILTER(?class="restrictions") .
-                                    OPTIONAL{?paragraph legal:context ?context}
+                                    OPTIONAL{?class legal:restrictionContext ?context}
                              }
     </QUERY>
     <QUESTION>
@@ -74,11 +44,11 @@
     <QUERY>
         PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
-                                    ?paragraph legal:topic ?x   .
-                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:ofClass ?class .
+                                    ?class rdf:type legal:Right   .
+                                    ?class legal:entitledObject ?x  .
                                     ?paragraph legal:text ?text .
-                                    FILTER(?class="rights") .
-                                    OPTIONAL{?paragraph legal:context ?context}
+                                    OPTIONAL{?class legal:entitlementContext ?context}
                              }
     </QUERY>
     <QUESTION>
@@ -98,11 +68,11 @@
     <QUERY>
         PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
-                                    ?paragraph legal:topic ?x   .
-                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:ofClass ?class .
+                                    ?class rdf:type legal:Duty   .
+                                    ?class legal:dutiableObject ?x  .
                                     ?paragraph legal:text ?text .
-                                    FILTER(?class="duties") .
-                                    OPTIONAL{?paragraph legal:context ?context}
+                                    OPTIONAL{?class legal:dutyContext ?context}
                              }
     </QUERY>
     <QUESTION>
@@ -122,11 +92,11 @@
     <QUERY>
         PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
-                                    ?paragraph legal:topic ?x   .
-                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:ofClass ?class .
+                                    ?class rdf:type legal:Purpose   .
+                                    ?class legal:purposedObject ?x  .
                                     ?paragraph legal:text ?text .
-                                    FILTER(?class="purpose")    .
-                                    OPTIONAL{?paragraph legal:context ?context}
+                                    OPTIONAL{?class legal:purposeContext ?context}
                              }
     </QUERY>
     <QUESTION>
@@ -140,11 +110,10 @@
     <QUERY>
         PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
         SELECT ?x ?text  WHERE {    ?article legal:has ?paragraph .
-                                    ?paragraph legal:topic ?x   .
-                                    ?paragraph legal:class ?class    .
+                                    ?paragraph legal:ofClass ?class .
+                                    ?class legal:definedObject ?x  .
+                                    ?class rdf:type legal:Definition   .
                                     ?paragraph legal:text ?text .
-                                    FILTER(?class="definition")
-                                    OPTIONAL{?paragraph legal:context ?context}
                              }
     </QUERY>
     <QUESTION>
@@ -161,6 +130,36 @@
     </QUESTION>
     <VARIABLES>
         ?x
+    </VARIABLES>
+</INSTANCE>
+<INSTANCE>
+    <QUERY>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
+                                    ?paragraph legal:ofClass ?class .
+                                    ?class legal:regulatedObject ?x  .
+                                    ?class rdf:type legal:Regulation   .
+                                    ?paragraph legal:text ?text .
+                                    OPTIONAL{?class legal:regulationContext ?context}
+                             }
+    </QUERY>
+    <QUESTION>
+        What regulations exist with respect to ?x
+    </QUESTION>
+    <QUESTION>
+        What rules govern the ?x
+    </QUESTION>
+    <QUESTION>
+        What are the rules of the ?x
+    </QUESTION>
+        <QUESTION>
+        What regulations exist with respect to ?x for ?context
+    </QUESTION>
+    <QUESTION>
+        What rules govern the ?x in the context of ?context
+    </QUESTION>
+    <VARIABLES>
+         ?x ?context
     </VARIABLES>
 </INSTANCE>
 
