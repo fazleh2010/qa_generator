@@ -2,6 +2,7 @@ import rdflib
 from rdflib.plugins.sparql import prepareQuery
 
 
+# a question-answer pair
 class Question:
     def __init__(self, question, answer):
         self.question = question
@@ -28,10 +29,12 @@ class Instance:
         self.questions.append(question)
         return
 
+    # adds a variable to the list of variables
     def add_variable(self, var):
         self.variables.append(var)
         return
 
+    # setter for temporary variable
     def set_temp_variables(self, vars):
         self.temp = vars
         return
@@ -98,7 +101,7 @@ def intialize_system(config):
     return instances
 
 
-# has to be ttl file
+# has to be a turtle (ttl) file
 def initialize_graph(filename):
     # creates the graph
     g = rdflib.Graph()
@@ -134,11 +137,12 @@ def separate_variables(instance):
         i = i + 1
 
 
+# binds a value for a variable question
 def bind_var_to_question(question, var, new):
+    # if a new value exists, replace the variable, otherwise not
     if new:
         return str(question).replace(var, new)
     else:
-        # return None
         return str(question).replace(var, var)
 
 
@@ -149,23 +153,20 @@ def main():
     # reads the config file
     config_file = open("my_config.txt", "r")
 
-    # creates the instances given in confiq file
+    # creates the instances given in config file
     instances = intialize_system(config_file.read())
 
     # initializes the graph for the ontology
-    # ontology = "untitled-ontology-14"
     ontology = "spanish_law"
     g = initialize_graph(ontology)
-
-    # + " " because that is generated automatically
-    # question = input("Ask a question:\n") + " "
 
     for instance in instances:
         separate_variables(instance)
 
     for instance in instances:
+        table = g.query(instance.query)
         for question in instance.questions:
-            for row in g.query(instance.query):
+            for row in table:
                 i = 0
                 q = question
 
@@ -177,25 +178,9 @@ def main():
                     q = q + "?"
                     result.append(Question(q, row[i]))
 
-    # for instance in instances:
-    #     for question in instance.questions:
-    #         for row in g.query(instance.query):
-    #             i = 0
-    #             variables_amount = len(instance.variables)
-    #             q = question
-    #             while i < variables_amount:
-    #                 q = bind_var_to_question(q, instance.variables[i], row[i])
-    #                 i = i + 1
-    #             result.append(Question(q, row[variables_amount]))
-
     for q in result:
         print("Q: " + q.question)
         print("A: " + q.answer + "\n")
-
-    # # the QueryProcessor knows the FOAF prefix from the graph
-    # # which in turn knows it from reading the N3 RDF file
-    # for row in g.query("SELECT ?d WHERE { [] rdf:type ?d}"):
-    #     print(row.d)
 
 
 if __name__ == '__main__':

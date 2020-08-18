@@ -1,6 +1,6 @@
 <INSTANCE>
     <QUERY>
-        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/7/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
                                     ?paragraph legal:ofClass ?class .
                                     ?class rdf:type legal:Requirement   .
@@ -24,7 +24,7 @@
 </INSTANCE>
 <INSTANCE>
     <QUERY>
-        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/7/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
                                     ?paragraph legal:ofClass ?class .
                                     ?class rdf:type legal:Restriction   .
@@ -42,7 +42,7 @@
 </INSTANCE>
 <INSTANCE>
     <QUERY>
-        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/7/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
                                     ?paragraph legal:ofClass ?class .
                                     ?class rdf:type legal:Right   .
@@ -66,7 +66,7 @@
 </INSTANCE>
 <INSTANCE>
     <QUERY>
-        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/7/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
                                     ?paragraph legal:ofClass ?class .
                                     ?class rdf:type legal:Duty   .
@@ -90,7 +90,7 @@
 </INSTANCE>
 <INSTANCE>
     <QUERY>
-        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/7/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
                                     ?paragraph legal:ofClass ?class .
                                     ?class rdf:type legal:Purpose   .
@@ -108,7 +108,7 @@
 </INSTANCE>
 <INSTANCE>
     <QUERY>
-        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/7/spanish_law#>
         SELECT ?x ?text  WHERE {    ?article legal:has ?paragraph .
                                     ?paragraph legal:ofClass ?class .
                                     ?class legal:definedObject ?x  .
@@ -134,7 +134,7 @@
 </INSTANCE>
 <INSTANCE>
     <QUERY>
-        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/4/spanish_law#>
+        PREFIX legal: <http://www.semanticweb.org/lukas/ontologies/2020/7/spanish_law#>
         SELECT ?x ?context ?text  WHERE {    ?article legal:has ?paragraph .
                                     ?paragraph legal:ofClass ?class .
                                     ?class legal:regulatedObject ?x  .
